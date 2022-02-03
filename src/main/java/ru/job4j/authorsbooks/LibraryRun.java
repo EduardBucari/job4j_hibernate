@@ -15,6 +15,17 @@ public class LibraryRun {
             Session session = sf.openSession();
             session.beginTransaction();
 
+            /**
+             *  Book book1 = Book.of("Pink Floyd");
+             *  book1.addAuthor(new Author("A-Floyd"));
+             *  book1.addAuthor(new Author("B-Floyd"));
+             *
+             *  Book book2 = Book.of("Rose Floyd");
+             *  book2.addAuthor(new Author("Roland"));
+             *
+             *  session.save(book1);
+             *  session.save(book2);
+             */
             Book book = session.get(Book.class, 1);
             session.remove(book);
 
