@@ -26,5 +26,11 @@
         <mapping class="ru.job4j.authorsbooks.Book" />
         <mapping class="ru.job4j.authorsbooks.Author" />
 
+        <mapping class="ru.job4j.lazy.Category"/>
+        <mapping class="ru.job4j.lazy.Task"/>
+
+        <mapping class="ru.job4j.lazy.cars.Model"/>
+        <mapping class="ru.job4j.lazy.cars.Mark"/>
+
     </session-factory>
 </hibernate-configuration>
