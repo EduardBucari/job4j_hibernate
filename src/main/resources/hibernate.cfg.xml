@@ -19,5 +19,12 @@
 
         <mapping class="ru.job4j.models.AutoBrand" />
         <mapping class="ru.job4j.models.AutoModel" />
+
+        <mapping class="ru.job4j.manytomany.Person" />
+        <mapping class="ru.job4j.manytomany.Address" />
+
+        <mapping class="ru.job4j.authorsbooks.Book" />
+        <mapping class="ru.job4j.authorsbooks.Author" />
+
     </session-factory>
 </hibernate-configuration>
