@@ -32,5 +32,8 @@
         <mapping class="ru.job4j.lazy.cars.Model"/>
         <mapping class="ru.job4j.lazy.cars.Mark"/>
 
+        <mapping class="ru.job4j.hql.Student"/>
+        <mapping class="ru.job4j.hql.Candidate"/>
+
     </session-factory>
 </hibernate-configuration>
