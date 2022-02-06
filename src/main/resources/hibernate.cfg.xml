@@ -35,5 +35,8 @@
         <mapping class="ru.job4j.hql.Student"/>
         <mapping class="ru.job4j.hql.Candidate"/>
 
+        <mapping class="ru.job4j.hql.DataVacancies"/>
+        <mapping class="ru.job4j.hql.Vacancy"/>
+
     </session-factory>
 </hibernate-configuration>

@@ -11,6 +11,7 @@ public class CandidateRun {
     public static void main(String[] args) {
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure().build();
+        Candidate result = null;
         try {
             SessionFactory sf = new MetadataSources(registry)
                     .buildMetadata().buildSessionFactory();
@@ -56,6 +57,31 @@ public class CandidateRun {
             session.createQuery("delete from Candidate c where c.id =: fId")
                     .setParameter("fId", 1).executeUpdate();
             */
+            /**
+             Vacancy vacancy1 = Vacancy.of("Java_Developer");
+             Vacancy vacancy2 = Vacancy.of("CPP_Developer");
+             Vacancy vacancy3 = Vacancy.of("Puthon_Developer");
+             session.save(vacancy1);
+             session.save(vacancy2);
+             session.save(vacancy3);
+             DataVacancies dataVacancies = DataVacancies.of("Developers");
+             dataVacancies.addVacancy(vacancy1);
+             dataVacancies.addVacancy(vacancy2);
+             dataVacancies.addVacancy(vacancy3);
+             session.save(dataVacancies);
+             Candidate candidate = Candidate.of("Oksana", 1, 180000);
+             candidate.setDataVacancies(dataVacancies);
+             session.save(candidate);
+             */
+
+            result = (Candidate) session.createQuery(
+                            "select distinct c from Candidate c "
+                                    + " join fetch c.dataVacancies d"
+                                    + " join fetch d.vacancyList v where c.id =: fId")
+                    .setParameter("fId", 5)
+                    .uniqueResult();
+            System.out.println(result);
+
             session.getTransaction().commit();
             session.close();
         } catch (Exception e) {

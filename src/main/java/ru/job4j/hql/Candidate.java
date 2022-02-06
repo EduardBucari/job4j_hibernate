@@ -13,12 +13,23 @@ public class Candidate {
     private int experience;
     private int salary;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    private DataVacancies dataVacancies;
+
     public static Candidate of(String name, int experience, int salary) {
         Candidate candidate = new Candidate();
         candidate.name = name;
         candidate.experience = experience;
         candidate.salary = salary;
         return candidate;
+    }
+
+    public DataVacancies getDataVacancies() {
+        return dataVacancies;
+    }
+
+    public void setDataVacancies(DataVacancies dataVacancies) {
+        this.dataVacancies = dataVacancies;
     }
 
     public int getId() {
@@ -77,6 +88,7 @@ public class Candidate {
                 + ", name='" + name + '\''
                 + ", experience=" + experience
                 + ", salary=" + salary
+                + ", dataVacancies=" + dataVacancies
                 + '}';
     }
 }
