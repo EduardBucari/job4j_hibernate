@@ -6,6 +6,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
+import java.util.List;
 
 public class CandidateRun {
     public static void main(String[] args) {
@@ -41,10 +42,12 @@ public class CandidateRun {
             */
             /**
             кандидата по имени
-            Query query = session.createQuery("from Candidate c where c.name =: newName")
-                    .setParameter("newName", "Viktor");
-            System.out.println(query.uniqueResult());
             */
+            List<Candidate> query = session.createQuery(
+                            "from Candidate c where c.name =: newName", Candidate.class)
+                    .setParameter("newName", "Ivan").getResultList();
+            System.out.println(query);
+
             /**
             обновления записи кандидата
             session.createQuery("update Candidate c set c.name =: newName where c.id =: fId")
@@ -74,6 +77,7 @@ public class CandidateRun {
              session.save(candidate);
              */
 
+            /**
             result = (Candidate) session.createQuery(
                             "select distinct c from Candidate c "
                                     + " join fetch c.dataVacancies d"
@@ -81,6 +85,7 @@ public class CandidateRun {
                     .setParameter("fId", 5)
                     .uniqueResult();
             System.out.println(result);
+             */
 
             session.getTransaction().commit();
             session.close();
